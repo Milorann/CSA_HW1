@@ -25,42 +25,47 @@ main:
 	push	rbp
 	mov	rbp, rsp
 	sub	rsp, 16
-	lea	rax, .LC0[rip]
-	mov	rdi, rax
+	
+	lea	rdi, .LC0[rip]
 	mov	eax, 0
 	call	printf@PLT
-	lea	rax, -12[rbp]
-	mov	rsi, rax
-	lea	rax, .LC1[rip]
-	mov	rdi, rax
+	
+	lea	rsi, -12[rbp]
+	lea	rdi, .LC1[rip]
 	mov	eax, 0
 	call	__isoc99_scanf@PLT
+	
 	mov	eax, DWORD PTR -12[rbp]
 	test	eax, eax
 	jle	.L2
+	
 	mov	eax, DWORD PTR -12[rbp]
 	cmp	eax, 100
 	jle	.L3
+	
 .L2:
-	lea	rax, .LC2[rip]
-	mov	rdi, rax
+	lea	rdi, .LC2[rip]
 	call	puts@PLT
 	mov	eax, 0
 	jmp	.L12
+	
 .L3:
 	mov	DWORD PTR -4[rbp], 0
 	jmp	.L5
+	
 .L9:
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
 	lea	rdx, 0[0+rax*4]
+	
 	lea	rax, A[rip]
 	add	rax, rdx
 	mov	rsi, rax
-	lea	rax, .LC1[rip]
-	mov	rdi, rax
+	
+	lea	rdi, .LC1[rip]
 	mov	eax, 0
 	call	__isoc99_scanf@PLT
+	
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
 	lea	rdx, 0[0+rax*4]
