@@ -1,9 +1,11 @@
 	.intel_syntax noprefix
+	
 	.text
 	.local	A                   # массив A
 	.comm	A,400,32    
 	.local	B                   # массив B
 	.comm	B,400,32
+	
 	.section	.rodata
 	.align 8
 .LC0:
