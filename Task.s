@@ -26,9 +26,9 @@ main:
 	mov	rbp, rsp
 	sub	rsp, 16
 	
-	lea	rdi, .LC0[rip]
+	lea	rdi, .LC0[rip]          # 1-й аргумент для функции printf, т.е. &.LC0
 	mov	eax, 0
-	call	printf@PLT
+	call	printf@PLT          # вызов printf(.LC0);
 	
 	lea	rsi, -12[rbp]           # 2-й аргумент для функции scanf, т.е. &n
 	lea	rdi, .LC1[rip]          # 1-й аргумент для функции scanf, т.е. &.LC1
