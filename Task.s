@@ -1,8 +1,8 @@
 	.intel_syntax noprefix
 	.text
-	.local	A
-	.comm	A,400,32
-	.local	B
+	.local	A                   # массив A
+	.comm	A,400,32    
+	.local	B                   # массив B
 	.comm	B,400,32
 	.section	.rodata
 	.align 8
@@ -15,11 +15,11 @@
 	.string	"Wrong size. Termination of the program."
 .LC3:
 	.string	"%d "
+	
 	.text
 	.globl	main
 	.type	main, @function
 main:
-	endbr64
 	push	rbp
 	mov	rbp, rsp
 	sub	rsp, 16
