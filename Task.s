@@ -9,7 +9,6 @@
 	.globl	main
 	.type	main, @function
 main:
-	endbr64
 	push	rbp
 	mov	rbp, rsp
 	push	r15
