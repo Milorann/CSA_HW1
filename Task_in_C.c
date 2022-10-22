@@ -6,11 +6,11 @@ static int B[100];
 int main()
 {
     int n;
-    printf("Введите разер массива (от 1 до 100 включительно), затем введите элементы массива: ");
+    printf("Input array size (from 1 to 100), then input the elements: ");
     scanf("%d", &n);
 
     if(n < 1 || n > 100){
-        printf("Неправильный размер массива. Завершение программы.\n");
+        printf("Wrong size. Termination of the program.\n");
         return 0;
     }
 
