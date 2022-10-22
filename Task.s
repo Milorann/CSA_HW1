@@ -35,13 +35,11 @@ main:
 	mov	eax, 0
 	call	__isoc99_scanf@PLT  # вызов scanf("%d", &n)
 	
-	mov	eax, DWORD PTR -12[rbp]
-	test	eax, eax
-	jle	.L2
+	cmp	DWORD PTR -12[rbp], 1   # сравнивает n с 100
+	jl	.L2                     # если n < 1, то идет на завершение
 	
-	mov	eax, DWORD PTR -12[rbp]
-	cmp	eax, 100
-	jle	.L3
+	cmp	DWORD PTR -12[rbp], 100 # сравнивает n с 100
+	jle	.L3                     # если n <= 100, то прыгает в цикл
 	
 .L2:
 	lea	rdi, .LC2[rip]
