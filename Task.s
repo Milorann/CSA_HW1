@@ -33,7 +33,7 @@ main:
 	lea	rsi, -12[rbp]           # 2-й аргумент для функции scanf, т.е. &n
 	lea	rdi, .LC1[rip]          # 1-й аргумент для функции scanf, т.е. &.LC1
 	mov	eax, 0
-	call	__isoc99_scanf@PLT
+	call	__isoc99_scanf@PLT  # вызов scanf("%d", &n)
 	
 	mov	eax, DWORD PTR -12[rbp]
 	test	eax, eax
