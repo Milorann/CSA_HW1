@@ -30,8 +30,8 @@ main:
 	mov	eax, 0
 	call	printf@PLT
 	
-	lea	rsi, -12[rbp]
-	lea	rdi, .LC1[rip]
+	lea	rsi, -12[rbp]           # 2-й аргумент для функции scanf, т.е. &n
+	lea	rdi, .LC1[rip]          # 1-й аргумент для функции scanf, т.е. &.LC1
 	mov	eax, 0
 	call	__isoc99_scanf@PLT
 	
@@ -50,7 +50,7 @@ main:
 	jmp	.L12
 	
 .L3:
-	mov	DWORD PTR -4[rbp], 0
+	mov	DWORD PTR -4[rbp], 0    # i = 0;
 	jmp	.L5
 	
 .L9:
