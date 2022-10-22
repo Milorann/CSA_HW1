@@ -58,10 +58,9 @@ main:
 	cdqe
 	lea	rdx, 0[0+rax*4]
 	
-	lea	rax, A[rip]
-	add	rax, rdx
-	mov	rsi, rax
-	
+	lea	rsi, A[rip]
+	add	rsi, rdx
+
 	lea	rdi, .LC1[rip]
 	mov	eax, 0
 	call	__isoc99_scanf@PLT
@@ -71,14 +70,17 @@ main:
 	lea	rdx, 0[0+rax*4]
 	lea	rax, A[rip]
 	mov	eax, DWORD PTR [rdx+rax]
+	
 	test	eax, eax
 	jle	.L6
+	
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
 	lea	rdx, 0[0+rax*4]
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], 1
 	jmp	.L7
+	
 .L6:
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
@@ -87,38 +89,44 @@ main:
 	mov	eax, DWORD PTR [rdx+rax]
 	test	eax, eax
 	jns	.L8
+	
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
 	lea	rdx, 0[0+rax*4]
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], -1
 	jmp	.L7
+	
 .L8:
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
 	lea	rdx, 0[0+rax*4]
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], 0
+	
 .L7:
 	add	DWORD PTR -4[rbp], 1
+	
 .L5:
 	mov	eax, DWORD PTR -12[rbp]
 	cmp	DWORD PTR -4[rbp], eax
 	jl	.L9
 	mov	DWORD PTR -8[rbp], 0
 	jmp	.L10
+	
 .L11:
 	mov	eax, DWORD PTR -8[rbp]
 	cdqe
 	lea	rdx, 0[0+rax*4]
+	
 	lea	rax, B[rip]
-	mov	eax, DWORD PTR [rdx+rax]
-	mov	esi, eax
-	lea	rax, .LC3[rip]
-	mov	rdi, rax
+	mov	esi, DWORD PTR [rdx+rax]
+
+	lea	rdi, .LC3[rip]
 	mov	eax, 0
 	call	printf@PLT
 	add	DWORD PTR -8[rbp], 1
+	
 .L10:
 	mov	eax, DWORD PTR -12[rbp]
 	cmp	DWORD PTR -8[rbp], eax
@@ -126,6 +134,7 @@ main:
 	mov	edi, 10
 	call	putchar@PLT
 	mov	eax, 0
+	
 .L12:
 	leave
 	ret
