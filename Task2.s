@@ -58,13 +58,16 @@ input_and_forming:              # подпрограмма ввода и фор�
 	lea	rax, B[rip]             #
 	mov	DWORD PTR [rdx+rax], -1 # B[i] = -1
 	jmp	.L4
+	
 .L5:
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
-	lea	rax, B[rip]
-	mov	DWORD PTR [rdx+rax], 0
+	lea	rax, B[rip]             #
+	mov	DWORD PTR [rdx+rax], 0  # B[i] = 0
+	
 .L4:
 	add	DWORD PTR -4[rbp], 1    # i++
+	
 .L2:
 	mov	eax, DWORD PTR -4[rbp]      # eax = i
 	cmp	eax, DWORD PTR -20[rbp]     # сравнение i и n
