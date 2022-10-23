@@ -15,10 +15,12 @@
 input_and_forming:              # подпрограмма ввода и формирования
 	push	rbp
 	mov	rbp, rsp
-	sub	rsp, 32
-	mov	DWORD PTR -20[rbp], edi
-	mov	DWORD PTR -4[rbp], 0
-	jmp	.L2
+	sub	rsp, 32                 # подготовка стэка
+	
+	mov	DWORD PTR -20[rbp], edi # загрузка n на стэк
+	mov	DWORD PTR -4[rbp], 0    # i = 0
+	
+	jmp	.L2                     # прыжок на шапку цикла
 .L6:
 	mov	eax, DWORD PTR -4[rbp]
 	lea	rdx, 0[0+rax*4]
@@ -60,9 +62,9 @@ input_and_forming:              # подпрограмма ввода и фор�
 .L4:
 	add	DWORD PTR -4[rbp], 1
 .L2:
-	mov	eax, DWORD PTR -4[rbp]
-	cmp	eax, DWORD PTR -20[rbp]
-	jl	.L6
+	mov	eax, DWORD PTR -4[rbp]      # eax = i
+	cmp	eax, DWORD PTR -20[rbp]     # сравнение i и n
+	jl	.L6                         # если i < n, прыжок в тело цикла
 	nop
 	nop
 	leave
