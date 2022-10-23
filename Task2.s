@@ -134,12 +134,11 @@ main:                           # основная программа
 	mov	eax, 0
 	call	printf@PLT          # printf(.LC2);
 	
-	lea	rax, -4[rbp]
-	mov	rsi, rax
-	lea	rax, .LC0[rip]
-	mov	rdi, rax
+	lea	rsi, -4[rbp]            # 2-й аргумент для функции scanf, т.е. &n
+	lea	rdi, .LC0[rip]          # 1-й аргумент для функции scanf, т.е. &.LC1
 	mov	eax, 0
-	call	__isoc99_scanf@PLT
+	call	__isoc99_scanf@PLT  # scanf("%d", &n)
+	
 	mov	eax, DWORD PTR -4[rbp]
 	test	eax, eax
 	jle	.L11
