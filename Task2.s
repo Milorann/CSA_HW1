@@ -84,11 +84,11 @@ input_and_forming:              # подпрограмма ввода и фор�
 	.globl	print_arr
 	.type	print_arr, @function
 print_arr:                      # подпрограмма печати массива
-	push	rbp
-	mov	rbp, rsp
-	sub	rsp, 32
-	mov	DWORD PTR -20[rbp], edi
-	mov	DWORD PTR -4[rbp], 0
+	push	rbp                 #
+	mov	rbp, rsp                #
+	sub	rsp, 32                 # подготовка стэка
+	mov	DWORD PTR -20[rbp], edi # загрузка n на стэк
+	mov	DWORD PTR -4[rbp], 0    # i = 0
 	jmp	.L8
 .L9:
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
