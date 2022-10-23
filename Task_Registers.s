@@ -18,11 +18,11 @@ input_and_forming:              # получает на вход n
 	sub	rsp, 32                 # подготовка стэка
 	
 	mov	DWORD PTR -20[rbp], edi # загрузка n на стэк
-	mov	DWORD PTR -4[rbp], 0    # i = 0
+	mov	r12d, 0                 # i = 0
 	
 	jmp	.L2                     # прыжок на условие цикла
 .L6:
-	mov	eax, DWORD PTR -4[rbp]  # eax = i
+	mov	eax, r12d               # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	
 	lea	rsi, A[rip]             # /
@@ -32,45 +32,44 @@ input_and_forming:              # получает на вход n
 	mov	eax, 0
 	call	__isoc99_scanf@PLT  # scanf("%d", &A[i])
 	
-	mov	eax, DWORD PTR -4[rbp]  # eax = i
+	mov	eax, r12d               # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, A[rip]                 # 
 	mov	eax, DWORD PTR [rdx+rax]    #
 	test	eax, eax                # if(A[i] > 0)
 	jle	.L3
 	
-	mov	eax, DWORD PTR -4[rbp]  # eax = i
+	mov	eax, r12d               # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, B[rip]             #
 	mov	DWORD PTR [rdx+rax], 1  # B[i] = 1
 	jmp	.L4
 	
 .L3:
-	mov	eax, DWORD PTR -4[rbp]  # eax = i
+	mov	eax, r12d               # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, A[rip]                 #
 	mov	eax, DWORD PTR [rdx+rax]    #
 	test	eax, eax                # else if(A[i] < 0)
 	jns	.L5
 	
-	mov	eax, DWORD PTR -4[rbp]  # eax = i
+	mov	eax, r12d               # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, B[rip]             #
 	mov	DWORD PTR [rdx+rax], -1 # B[i] = -1
 	jmp	.L4
 	
 .L5:
-	mov	eax, DWORD PTR -4[rbp]  # eax = i
+	mov	eax, r12d               # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, B[rip]             #
 	mov	DWORD PTR [rdx+rax], 0  # B[i] = 0
 	
 .L4:
-	add	DWORD PTR -4[rbp], 1    # i++
+	add	r12d, 1                 # i++
 	
 .L2:
-	mov	eax, DWORD PTR -4[rbp]      # eax = i
-	cmp	eax, DWORD PTR -20[rbp]     # сравнение i и n
+	cmp	r12d, DWORD PTR -20[rbp]     # сравнение i и n
 	jl	.L6                         # если i < n, прыжок в тело цикла
 	
 	leave                       # подпрограмма не возвращает значений
