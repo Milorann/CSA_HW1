@@ -98,7 +98,7 @@ print_arr:                      # подпрограмма печати масс
 	mov	esi, DWORD PTR [rdx+rax] # 2-й аргумент для функции printf, т.е. &B[i]
 	lea	rdi, .LC1[rip]          # 1-й аргумент для функции printf, т.е. &.LC1    
 	mov	eax, 0
-	call	printf@PLT
+	call	printf@PLT          # вызов printf(.LC1, B[i])
 	add	DWORD PTR -4[rbp], 1    # i++
 	
 .L8:
