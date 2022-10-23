@@ -1,9 +1,9 @@
 	.intel_syntax noprefix
 	.text
 	.local	A
-	.comm	A,400,32            # массив
+	.comm	A,400,32            # массив A
 	.local	B
-	.comm	B,400,32            # массив
+	.comm	B,400,32            # массив B
 	
 	.section	.rodata
 .LC0:
