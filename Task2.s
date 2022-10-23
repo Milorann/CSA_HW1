@@ -139,11 +139,11 @@ main:                           # основная программа
 	mov	eax, 0
 	call	__isoc99_scanf@PLT  # scanf("%d", &n)
 	
-	mov	eax, DWORD PTR -4[rbp]
-	test	eax, eax
+	mov	eax, DWORD PTR -4[rbp]  #
+	test	eax, eax            # if(n < 1
 	jle	.L11
-	mov	eax, DWORD PTR -4[rbp]
-	cmp	eax, 100
+	
+	cmp	DWORD PTR -4[rbp], 100  # || n > 100)
 	jle	.L12
 .L11:
 	lea	rax, .LC3[rip]
