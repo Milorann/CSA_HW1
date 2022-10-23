@@ -48,14 +48,15 @@ input_and_forming:              # подпрограмма ввода и фор�
 .L3:
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
-	lea	rax, A[rip]
-	mov	eax, DWORD PTR [rdx+rax]
-	test	eax, eax
+	lea	rax, A[rip]                 #
+	mov	eax, DWORD PTR [rdx+rax]    #
+	test	eax, eax                # else if(A[i] < 0)
 	jns	.L5
+	
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
-	lea	rax, B[rip]
-	mov	DWORD PTR [rdx+rax], -1
+	lea	rax, B[rip]             #
+	mov	DWORD PTR [rdx+rax], -1 # B[i] = -1
 	jmp	.L4
 .L5:
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
