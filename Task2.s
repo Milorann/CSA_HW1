@@ -155,6 +155,7 @@ main:                           # основная программа
 .L12:
 	mov	edi, DWORD PTR -4[rbp]  # аргумент для подпрограммы
 	call	input_and_forming   # вызов подпрограммы ввода A и формирования B
+	
 	mov	edi, DWORD PTR -4[rbp]  # аргумент для подпрограммы
 	call	print_arr           # вызов подпрограммы печати B
 	mov	eax, 0
