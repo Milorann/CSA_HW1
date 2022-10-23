@@ -90,23 +90,24 @@ print_arr:                      # подпрограмма печати масс
 	mov	DWORD PTR -20[rbp], edi # загрузка n на стэк
 	mov	DWORD PTR -4[rbp], 0    # i = 0
 	jmp	.L8
+	
 .L9:
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
-	lea	rax, B[rip]
-	mov	eax, DWORD PTR [rdx+rax]
-	mov	esi, eax
-	lea	rax, .LC1[rip]
-	mov	rdi, rax
+	lea	rax, B[rip]             #
+	mov	esi, DWORD PTR [rdx+rax] # 2-й аргумент для функции printf, т.е. &B[i]
+	lea	rdi, .LC1[rip]          # 1-й аргумент для функции printf, т.е. &.LC1    
 	mov	eax, 0
 	call	printf@PLT
-	add	DWORD PTR -4[rbp], 1
+	add	DWORD PTR -4[rbp], 1    # i++
+	
 .L8:
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
-	cmp	eax, DWORD PTR -20[rbp]
-	jl	.L9
-	mov	edi, 10
-	call	putchar@PLT
+	cmp	eax, DWORD PTR -20[rbp] # сравнение i и n
+	jl	.L9                     # если i < n, прыжок в тело цикла
+	
+	mov	edi, 10                 # 1-й аргумент для функции printf, т.е. '\n'        
+	call	putchar@PLT         # вызов putchar('\n') (printf('\n'))
 	
 	leave
 	ret                         # конец подпрограммы печати массива B
