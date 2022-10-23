@@ -34,15 +34,17 @@ input_and_forming:              # подпрограмма ввода и фор�
 	
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
-	lea	rax, A[rip]
-	mov	eax, DWORD PTR [rdx+rax]
-	test	eax, eax
+	lea	rax, A[rip]                 # 
+	mov	eax, DWORD PTR [rdx+rax]    #
+	test	eax, eax                # if(A[i] > 0)
 	jle	.L3
+	
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
-	lea	rdx, 0[0+rax*4]
-	lea	rax, B[rip]
-	mov	DWORD PTR [rdx+rax], 1
+	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
+	lea	rax, B[rip]             #
+	mov	DWORD PTR [rdx+rax], 1  # B[i] = 1
 	jmp	.L4
+	
 .L3:
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
