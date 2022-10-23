@@ -25,14 +25,15 @@ input_and_forming:              # подпрограмма ввода и фор�
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	
-	lea	rsi, A[rip]
-	add	rsi, rdx
+	lea	rsi, A[rip]             # /
+	add	rsi, rdx                # \ 2-й аргумент для функции scanf, т.е. &A[i]
 
-	lea	rdi, .LC0[rip]
+	lea	rdi, .LC0[rip]          # 1-й аргумент для функции scanf, т.е. &.LC0
 	mov	eax, 0
-	call	__isoc99_scanf@PLT
+	call	__isoc99_scanf@PLT  # scanf("%d", &A[i])
+	
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
-	lea	rdx, 0[0+rax*4]
+	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, A[rip]
 	mov	eax, DWORD PTR [rdx+rax]
 	test	eax, eax
@@ -44,19 +45,19 @@ input_and_forming:              # подпрограмма ввода и фор�
 	jmp	.L4
 .L3:
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
-	lea	rdx, 0[0+rax*4]
+	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, A[rip]
 	mov	eax, DWORD PTR [rdx+rax]
 	test	eax, eax
 	jns	.L5
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
-	lea	rdx, 0[0+rax*4]
+	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], -1
 	jmp	.L4
 .L5:
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
-	lea	rdx, 0[0+rax*4]
+	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], 0
 .L4:
@@ -85,7 +86,7 @@ print_arr:                      # подпрограмма печати масс
 	jmp	.L8
 .L9:
 	mov	eax, DWORD PTR -4[rbp]  # eax = i
-	lea	rdx, 0[0+rax*4]
+	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, B[rip]
 	mov	eax, DWORD PTR [rdx+rax]
 	mov	esi, eax
