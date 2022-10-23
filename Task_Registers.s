@@ -17,7 +17,7 @@ input_and_forming:              # получает на вход n
 	mov	rbp, rsp
 	sub	rsp, 32                 # подготовка стэка
 	
-	mov	DWORD PTR -20[rbp], edi # загрузка n на стэк
+	mov	r13d, edi               # загрузка n в регистр r13d
 	mov	r12d, 0                 # i = 0
 	
 	jmp	.L2                     # прыжок на условие цикла
@@ -69,8 +69,8 @@ input_and_forming:              # получает на вход n
 	add	r12d, 1                 # i++
 	
 .L2:
-	cmp	r12d, DWORD PTR -20[rbp]     # сравнение i и n
-	jl	.L6                         # если i < n, прыжок в тело цикла
+	cmp	r12d, r13d              # сравнение i и n
+	jl	.L6                     # если i < n, прыжок в тело цикла
 	
 	leave                       # подпрограмма не возвращает значений
 	ret                         # конец подпрограммы ввода и формирования
@@ -87,7 +87,7 @@ print_arr:                      # получает на вход n
 	push	rbp                 #
 	mov	rbp, rsp                #
 	sub	rsp, 32                 # подготовка стэка
-	mov	DWORD PTR -20[rbp], edi # загрузка n на стэк
+	mov	r13d, edi               # загрузка n в регистр r13d
 	mov	r12d, 0                 # i = 0
 	jmp	.L8
 	
@@ -103,7 +103,7 @@ print_arr:                      # получает на вход n
 	
 .L8:
 	mov	eax, r12d               # eax = i
-	cmp	eax, DWORD PTR -20[rbp] # сравнение i и n
+	cmp	eax, r13d               # сравнение i и n
 	jl	.L9                     # если i < n, прыжок в тело цикла
 	
 	mov	edi, 10                 # 1-й аргумент для функции printf, т.е. '\n'        
@@ -164,4 +164,4 @@ main:                           # основная программа
 	
 .L14:
 	leave                       #
-	ret                         # конец основной программы  
+	ret                         # конец основной программы
