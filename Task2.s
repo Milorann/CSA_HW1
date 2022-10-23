@@ -145,12 +145,13 @@ main:                           # основная программа
 	
 	cmp	DWORD PTR -4[rbp], 100  # || n > 100)
 	jle	.L12
+	
 .L11:
-	lea	rax, .LC3[rip]
-	mov	rdi, rax
-	call	puts@PLT
+	lea	rdi, .LC3[rip]          # 1-й аргумент для функции printf, т.е. &.LC3
+	call	puts@PLT            # puts(.LC2) (printf(.LC2) с \n)
 	mov	eax, 0
 	jmp	.L14
+	
 .L12:
 	mov	eax, DWORD PTR -4[rbp]
 	mov	edi, eax
