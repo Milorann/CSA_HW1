@@ -56,10 +56,9 @@ main:
 	lea	rdx, 0[0+rax*4]         # rdx = rax * 4
 	lea	rsi, A[rip]
 	add	rsi, rdx
-
-	lea	rdi, .LC1[rip]
+	lea	rdi, .LC1[rip]          # 1-й аргумент для функции scanf, т.е. &.LC1
 	mov	eax, 0
-	call	__isoc99_scanf@PLT
+	call	__isoc99_scanf@PLT  # вызов scanf("%d", &A[i])
 	
 	mov	eax, DWORD PTR -4[rbp]  # eax = i (первый цикл)
 	lea	rdx, 0[0+rax*4]         # rdx = rax * 4
