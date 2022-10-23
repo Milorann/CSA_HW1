@@ -112,7 +112,7 @@ main:
 	mov	esi, DWORD PTR [rdx+rax]# 2-й аргумент для функции printf, т.е. &B[i]
 	lea	rdi, .LC3[rip]          # 1-й аргумент для функции printf, т.е. &.LC3
 	mov	eax, 0
-	call	printf@PLT
+	call	printf@PLT          # вызов printf(.LC3, B[i])
 	add	DWORD PTR -8[rbp], 1    # i++ (второй цикл)
 	
 .L10:
