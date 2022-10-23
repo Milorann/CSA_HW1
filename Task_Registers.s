@@ -88,21 +88,21 @@ print_arr:                      # получает на вход n
 	mov	rbp, rsp                #
 	sub	rsp, 32                 # подготовка стэка
 	mov	DWORD PTR -20[rbp], edi # загрузка n на стэк
-	mov	DWORD PTR -4[rbp], 0    # i = 0
+	mov	r12d, 0                 # i = 0
 	jmp	.L8
 	
 .L9:
-	mov	eax, DWORD PTR -4[rbp]  # eax = i
+	mov	eax, r12d               # eax = i
 	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
 	lea	rax, B[rip]             #
 	mov	esi, DWORD PTR [rdx+rax] # 2-й аргумент для функции printf, т.е. &B[i]
 	lea	rdi, .LC1[rip]          # 1-й аргумент для функции printf, т.е. &.LC1    
 	mov	eax, 0
 	call	printf@PLT          # вызов printf(.LC1, B[i])
-	add	DWORD PTR -4[rbp], 1    # i++
+	add	r12d, 1                 # i++
 	
 .L8:
-	mov	eax, DWORD PTR -4[rbp]  # eax = i
+	mov	eax, r12d               # eax = i
 	cmp	eax, DWORD PTR -20[rbp] # сравнение i и n
 	jl	.L9                     # если i < n, прыжок в тело цикла
 	
