@@ -34,7 +34,7 @@ Wrong size. Termination of the program.
 Wrong size. Termination of the program.
 
 #### 4 тест ####
-1
+1  
 -234
 ##### Результат (одинаковый во всех программах) #####
 -1
