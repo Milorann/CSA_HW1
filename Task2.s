@@ -107,7 +107,7 @@ print_arr:                      # подпрограмма печати масс
 	jl	.L9                     # если i < n, прыжок в тело цикла
 	
 	mov	edi, 10                 # 1-й аргумент для функции printf, т.е. '\n'        
-	call	putchar@PLT         # вызов putchar('\n') (printf('\n'))
+	call	putchar@PLT         # putchar('\n') (printf('\n'))
 	
 	leave
 	ret                         # конец подпрограммы печати массива B
@@ -121,17 +121,19 @@ print_arr:                      # подпрограмма печати масс
 	.align 8
 .LC3:
 	.string	"Wrong size. Termination of the program."
+
 	.text
 	.globl	main
 	.type	main, @function
 main:                           # основная программа
-	push	rbp
-	mov	rbp, rsp
-	sub	rsp, 16
-	lea	rax, .LC2[rip]
-	mov	rdi, rax
+	push	rbp                 #
+	mov	rbp, rsp                #
+	sub	rsp, 16                 # подготовка стэка
+	
+	lea	rdi, .LC2[rip]          # 1-й аргумент для функции printf, т.е. &.LC2
 	mov	eax, 0
-	call	printf@PLT
+	call	printf@PLT          # printf(.LC2);
+	
 	lea	rax, -4[rbp]
 	mov	rsi, rax
 	lea	rax, .LC0[rip]
