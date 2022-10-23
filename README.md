@@ -52,6 +52,7 @@ Wrong size. Termination of the program.
 gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions ./Task_in_C.c -S -o ./Task_from_C.s
   
 ### Информация, подтверждающая выполнение задания на 6 ###
+Программа допускает размеры массива от 1 до 100 включительно.  
 Добавлены комментарии.  
 Убраны лишние макросы, в том числе endbr64.  
 Удалены из конца кода строки ниже ret, а из начала информация о файле, из которой получили код на ассемблере.  
