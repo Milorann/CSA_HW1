@@ -1,9 +1,9 @@
 	.intel_syntax noprefix
 	.text
 	.local	A
-	.comm	A,400,32            # массив A
+	.comm	A,400,32            # массив
 	.local	B
-	.comm	B,400,32            # массив B
+	.comm	B,400,32            # массив
 	
 	.section	.rodata
 .LC0:
@@ -12,7 +12,7 @@
 	.text
 	.globl	input_and_forming
 	.type	input_and_forming, @function
-input_and_forming:              # подпрограмма ввода A и формирования B
+input_and_forming:              # подпрограмма ввода и формирования
 	push	rbp
 	mov	rbp, rsp
 	sub	rsp, 32
@@ -76,7 +76,7 @@ input_and_forming:              # подпрограмма ввода A и фо�
 	.text
 	.globl	print_arr
 	.type	print_arr, @function
-print_arr:                      # подпрограмма печати массива B
+print_arr:                      # подпрограмма печати массива
 	push	rbp
 	mov	rbp, rsp
 	sub	rsp, 32
@@ -153,3 +153,4 @@ main:                           # основная программа
 .L14:
 	leave
 	ret                         # конец основной программы
+	
