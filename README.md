@@ -36,10 +36,11 @@ Wrong size. Termination of the program.
 Код находится в файле Task_in_C.c  
 
 #### Оптимизированная программа на ассембелере с комментариями #### 
-Код находится в файле Task.s
+Код на 5 находится в файле Task.s.  
+Код на 6 находится в файле Task_Rigisters.s.
 
 #### Программа на ассембелере от компилятора #### 
-Код находится в файле Task_from_C.s
+Код находится в файле Task_from_C.s  
 Код получен путем компиляции Task_in_C.c следующим образом:  
 gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions ./Task_in_C.c -S -o ./Task_from_C.s
 
