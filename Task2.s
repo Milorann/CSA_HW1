@@ -20,47 +20,47 @@ input_and_forming:              # подпрограмма ввода и фор�
 	mov	DWORD PTR -20[rbp], edi # загрузка n на стэк
 	mov	DWORD PTR -4[rbp], 0    # i = 0
 	
-	jmp	.L2                     # прыжок на шапку цикла
+	jmp	.L2                     # прыжок на условие цикла
 .L6:
-	mov	eax, DWORD PTR -4[rbp]
-	lea	rdx, 0[0+rax*4]
-	lea	rax, A[rip]
-	add	rax, rdx
-	mov	rsi, rax
-	lea	rax, .LC0[rip]
-	mov	rdi, rax
+	mov	eax, DWORD PTR -4[rbp]  # eax = i
+	lea	rdx, 0[0+rax*4]         # rdx = i * 4 (для получения позиции)
+	
+	lea	rsi, A[rip]
+	add	rsi, rdx
+
+	lea	rdi, .LC0[rip]
 	mov	eax, 0
 	call	__isoc99_scanf@PLT
-	mov	eax, DWORD PTR -4[rbp]
+	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]
 	lea	rax, A[rip]
 	mov	eax, DWORD PTR [rdx+rax]
 	test	eax, eax
 	jle	.L3
-	mov	eax, DWORD PTR -4[rbp]
+	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], 1
 	jmp	.L4
 .L3:
-	mov	eax, DWORD PTR -4[rbp]
+	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]
 	lea	rax, A[rip]
 	mov	eax, DWORD PTR [rdx+rax]
 	test	eax, eax
 	jns	.L5
-	mov	eax, DWORD PTR -4[rbp]
+	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], -1
 	jmp	.L4
 .L5:
-	mov	eax, DWORD PTR -4[rbp]
+	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], 0
 .L4:
-	add	DWORD PTR -4[rbp], 1
+	add	DWORD PTR -4[rbp], 1    # i++
 .L2:
 	mov	eax, DWORD PTR -4[rbp]      # eax = i
 	cmp	eax, DWORD PTR -20[rbp]     # сравнение i и n
@@ -84,7 +84,7 @@ print_arr:                      # подпрограмма печати масс
 	mov	DWORD PTR -4[rbp], 0
 	jmp	.L8
 .L9:
-	mov	eax, DWORD PTR -4[rbp]
+	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	lea	rdx, 0[0+rax*4]
 	lea	rax, B[rip]
 	mov	eax, DWORD PTR [rdx+rax]
@@ -95,7 +95,7 @@ print_arr:                      # подпрограмма печати масс
 	call	printf@PLT
 	add	DWORD PTR -4[rbp], 1
 .L8:
-	mov	eax, DWORD PTR -4[rbp]
+	mov	eax, DWORD PTR -4[rbp]  # eax = i
 	cmp	eax, DWORD PTR -20[rbp]
 	jl	.L9
 	mov	edi, 10
@@ -153,4 +153,3 @@ main:                           # основная программа
 .L14:
 	leave
 	ret                         # конец основной программы
-	
