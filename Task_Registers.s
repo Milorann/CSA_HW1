@@ -139,11 +139,13 @@ main:                           # основная программа
 	mov	eax, 0
 	call	__isoc99_scanf@PLT  # scanf("%d", &n)
 	
-	mov	eax, DWORD PTR -4[rbp]  #
+	mov	r12d, -4[rbp]           # загружаем n в регистр r12d
+	
+	mov	eax, r12d               #
 	test	eax, eax            # if(n < 1
 	jle	.L11
 	
-	cmp	DWORD PTR -4[rbp], 100  # || n > 100)
+	cmp	r12d, 100               # || n > 100)
 	jle	.L12
 	
 .L11:
@@ -153,10 +155,10 @@ main:                           # основная программа
 	jmp	.L14
 	
 .L12:
-	mov	edi, DWORD PTR -4[rbp]  # аргумент для подпрограммы
+	mov	edi, r12d               # аргумент для подпрограммы
 	call	input_and_forming   # вызов подпрограммы ввода A и формирования B
 	
-	mov	edi, DWORD PTR -4[rbp]  # аргумент для подпрограммы
+	mov	edi, r12d               # аргумент для подпрограммы
 	call	print_arr           # вызов подпрограммы печати B
 	mov	eax, 0
 	
