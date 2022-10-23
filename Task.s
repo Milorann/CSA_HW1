@@ -42,8 +42,8 @@ main:
 	jle	.L3                     # если n <= 100, то прыгает в цикл
 	
 .L2:
-	lea	rdi, .LC2[rip]
-	call	puts@PLT
+	lea	rdi, .LC2[rip]          # 1-й аргумент для функции printf, т.е. &.LC2
+	call	puts@PLT            # вызов puts(.LC2) (printf(.LC2) с \n)
 	mov	eax, 0
 	jmp	.L12
 	
@@ -109,9 +109,8 @@ main:
 	mov	eax, DWORD PTR -8[rbp]  # eax = i (второй цикл)
 	lea	rdx, 0[0+rax*4]         # rdx = rax * 4
 	lea	rax, B[rip]
-	mov	esi, DWORD PTR [rdx+rax]
-
-	lea	rdi, .LC3[rip]
+	mov	esi, DWORD PTR [rdx+rax]# 2-й аргумент для функции printf, т.е. &B[i]
+	lea	rdi, .LC3[rip]          # 1-й аргумент для функции printf, т.е. &.LC3
 	mov	eax, 0
 	call	printf@PLT
 	add	DWORD PTR -8[rbp], 1    # i++ (второй цикл)
@@ -120,8 +119,8 @@ main:
 	mov	eax, DWORD PTR -12[rbp] # eax = n
 	cmp	DWORD PTR -8[rbp], eax
 	jl	.L11
-	mov	edi, 10
-	call	putchar@PLT
+	mov	edi, 10                 # 1-й аргумент для функции printf, т.е. '\n'
+	call	putchar@PLT         # вызов putchar('\n') (printf('\n'))
 	mov	eax, 0
 	
 .L12:
