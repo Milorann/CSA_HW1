@@ -50,7 +50,7 @@ Wrong size. Termination of the program.
 Код получен путем компиляции Task_in_C.c следующим образом:  
 gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions ./Task_in_C.c -S -o ./Task_from_C.s
   
-### Информация, подтверждающую выполнение задания на 6 ###
+### Информация, подтверждающая выполнение задания на 6 ###
 Добавлены комментарии.  
 Убраны лишние макросы, в том числе endbr64.  
 Удалены из конца кода строки ниже ret, а из начала информация о файле, из которой получили код на ассемблере.  
