@@ -53,9 +53,7 @@ main:
 	
 .L9:
 	mov	eax, DWORD PTR -4[rbp]
-	cdqe
 	lea	rdx, 0[0+rax*4]
-	
 	lea	rsi, A[rip]
 	add	rsi, rdx
 
@@ -64,7 +62,7 @@ main:
 	call	__isoc99_scanf@PLT
 	
 	mov	eax, DWORD PTR -4[rbp]
-	cdqe
+	
 	lea	rdx, 0[0+rax*4]
 	lea	rax, A[rip]
 	mov	eax, DWORD PTR [rdx+rax]
@@ -73,7 +71,6 @@ main:
 	jle	.L6
 	
 	mov	eax, DWORD PTR -4[rbp]
-	cdqe
 	lea	rdx, 0[0+rax*4]
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], 1
@@ -81,7 +78,6 @@ main:
 	
 .L6:
 	mov	eax, DWORD PTR -4[rbp]
-	cdqe
 	lea	rdx, 0[0+rax*4]
 	lea	rax, A[rip]
 	mov	eax, DWORD PTR [rdx+rax]
@@ -89,7 +85,6 @@ main:
 	jns	.L8
 	
 	mov	eax, DWORD PTR -4[rbp]
-	cdqe
 	lea	rdx, 0[0+rax*4]
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], -1
@@ -97,7 +92,6 @@ main:
 	
 .L8:
 	mov	eax, DWORD PTR -4[rbp]
-	cdqe
 	lea	rdx, 0[0+rax*4]
 	lea	rax, B[rip]
 	mov	DWORD PTR [rdx+rax], 0
@@ -114,9 +108,7 @@ main:
 	
 .L11:
 	mov	eax, DWORD PTR -8[rbp]
-	cdqe
 	lea	rdx, 0[0+rax*4]
-	
 	lea	rax, B[rip]
 	mov	esi, DWORD PTR [rdx+rax]
 
