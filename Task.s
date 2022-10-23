@@ -123,5 +123,5 @@ main:
 	mov	eax, 0
 	
 .L12:
-	leave
-	ret
+	leave                       # выход из функции
+	ret                         # выход из функции
