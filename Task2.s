@@ -153,13 +153,12 @@ main:                           # основная программа
 	jmp	.L14
 	
 .L12:
-	mov	eax, DWORD PTR -4[rbp]
-	mov	edi, eax
-	call	input_and_forming
-	mov	eax, DWORD PTR -4[rbp]
-	mov	edi, eax
-	call	print_arr
+	mov	edi, DWORD PTR -4[rbp]  # аргумент для подпрограммы
+	call	input_and_forming   # вызов подпрограммы ввода A и формирования B
+	mov	edi, DWORD PTR -4[rbp]  # аргумент для подпрограммы
+	call	print_arr           # вызов подпрограммы печати B
 	mov	eax, 0
+	
 .L14:
-	leave
+	leave                       #
 	ret                         # конец основной программы
